@@ -50,8 +50,13 @@ class ManifestComponent extends React.Component {
   }
 
   render() {
-    const actionReports = this.props.stagedActions.map(this.renderAction.bind(this));
     const { visible } = this.state;
+    let actionReports;
+    if (visible) {
+      actionReports = [];
+    } else {
+      actionReports = this.props.stagedActions.map(this.renderAction.bind(this));
+    }
     const { commit, rollback, reset } = this.props;
 
     return (
